@@ -6,11 +6,13 @@ build-job:
    stage: build
    script:
       - echo "Check python version and build the project"
-      - image: ruby:3.0
+      - image: docker pull python
       - pip install -r requirements.txt
 
 test-code:
+        stage: test
+        script:
         - echo "Executing the test"
-        - script: python3 test.py
+        - python test.py
 
 
