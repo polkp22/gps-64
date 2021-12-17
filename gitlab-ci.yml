@@ -1,0 +1,16 @@
+stages:
+   - build
+   - test
+
+build-job:
+   stage: build
+   script:
+      - echo "Check python version and build the project"
+      - image: ruby:3.0
+      - pip install -r requirements.txt
+
+test-code:
+        - echo "Executing the test"
+        - script: python3 test.py
+
+
