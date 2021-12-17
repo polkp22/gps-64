@@ -1,0 +1,15 @@
+stages:
+  - analyse
+  - test
+  
+analyse-1:
+  stage: analyse
+  script: 
+    - pylint transform.py
+    - pylint main.py
+    
+test-1:
+  stage: test
+  script:
+    - echo "Compiling and running tests:"
+    - python test.py
