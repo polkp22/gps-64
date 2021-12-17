@@ -1,7 +1,13 @@
 stages:
+  - build
   - analyse
   - test
   
+build-reqs:
+  stage: build
+  script:
+    - pip install -r requirements.txt
+
 analyse-1:
   stage: analyse
   script: 
