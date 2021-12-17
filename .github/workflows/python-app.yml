@@ -6,6 +6,8 @@ stages:
 build-reqs:
   stage: build
   script:
+    - python -m pip install --upgrade pip
+    - pip install pylint
     - pip install -r requirements.txt
 
 analyse-1:
