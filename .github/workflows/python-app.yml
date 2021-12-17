@@ -1,23 +1,23 @@
-stages:
-  - build
-  - analyse
-  - test
-  
-build-reqs:
-  stage: build
-  script:
-    - python -m pip install --upgrade pip
-    - pip install pylint
-    - pip install -r requirements.txt
+name: python-app
 
-analyse-1:
-  stage: analyse
-  script: 
-    - pylint transform.py
-    - pylint main.py
-    
-test-1:
-  stage: test
-  script:
-    - echo "Compiling and running tests:"
-    - python test.py
+on: [push]
+
+jobs:
+  build-reqs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install
+        run:
+         python -m pip install --upgrade pip
+         pip install pylint
+         pip install -r requirements.txt
+             
+      - name: Analyse
+        run:
+         pylint transform.py
+         pylint main.py
+         
+      - name: Test
+        run:
+          echo "Compiling and running tests:"
+          python test.py
